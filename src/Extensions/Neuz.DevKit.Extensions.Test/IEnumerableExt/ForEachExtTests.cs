@@ -12,7 +12,7 @@ namespace Neuz.DevKit.Extensions.Test
     public class EnumerableExtTests
     {
         [ContractTestCase]
-        public void ForEachTest_1()
+        public void ForEach_Test_1()
         {
             "正常使用".Test(() =>
             {
@@ -46,7 +46,7 @@ namespace Neuz.DevKit.Extensions.Test
         }
 
         [ContractTestCase]
-        public void ForEachTest_2()
+        public void ForEach_Test_2()
         {
             "正常使用".Test(() =>
             {
