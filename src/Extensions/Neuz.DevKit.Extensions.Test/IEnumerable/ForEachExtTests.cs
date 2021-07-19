@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MSTest.Extensions.Contracts;
+using Neuz.DevKit.Extensions.IEnumerable;
 
+// ReSharper disable CheckNamespace
 // ReSharper disable ExpressionIsAlwaysNull
 // ReSharper disable UnusedParameter.Local
-// ReSharper disable CheckNamespace
 
-namespace Neuz.DevKit.Extensions.IEnumerableExt.Tests
+namespace Neuz.DevKit.Extensions.EnumerableExt.Tests
 {
     [TestClass]
-    public class ForEachExtTests
+    public class EnumerableExtTests
     {
         [ContractTestCase]
-        public void ForEachTest1()
+        public void ForEachTest_1()
         {
             "正常使用".Test(() =>
             {
@@ -47,7 +48,7 @@ namespace Neuz.DevKit.Extensions.IEnumerableExt.Tests
         }
 
         [ContractTestCase]
-        public void ForEachTest2()
+        public void ForEachTest_2()
         {
             "正常使用".Test(() =>
             {

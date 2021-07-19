@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
-namespace Neuz.DevKit.Extensions.IEnumerableExt
+namespace Neuz.DevKit.Extensions.IEnumerable
 {
-    public static partial class ForEachExt
+    public static partial class EnumerableExt
     {
         /// <summary>
         ///     对指定可计数的每个元素执行指定操作
@@ -15,8 +16,8 @@ namespace Neuz.DevKit.Extensions.IEnumerableExt
         ///     <para>T: 元素</para>
         /// </param>
         /// <typeparam name="T">元素类型</typeparam>
-        /// <exception cref="ArgumentNullException"> <paramref name="this" /> is null</exception>
-        /// <exception cref="ArgumentNullException"> <paramref name="action" /> is null</exception>
+        /// <exception cref="ArgumentNullException"> <paramref name="this" /> </exception>
+        /// <exception cref="ArgumentNullException"> <paramref name="action" /> </exception>
         /// <example>
         ///     <code>
         ///         <![CDATA[
@@ -28,10 +29,10 @@ namespace Neuz.DevKit.Extensions.IEnumerableExt
         ///         ]]>
         ///     </code>
         /// </example>
-        public static void ForEach<T>(this IEnumerable<T> @this, Action<int, T> action)
+        public static void ForEach<T>([NotNull] this IEnumerable<T> @this, [NotNull] Action<int, T> action)
         {
-            if (@this == null) throw new ArgumentNullException(nameof(@this), $"{nameof(@this)} is null");
-            if (action == null) throw new ArgumentNullException(nameof(action), $"{nameof(action)} is null");
+            if (@this == null) throw new ArgumentNullException(nameof(@this));
+            if (action == null) throw new ArgumentNullException(nameof(action));
             var i = 0;
             foreach (var item in @this) action(i++, item);
         }
@@ -45,8 +46,8 @@ namespace Neuz.DevKit.Extensions.IEnumerableExt
         ///     <para>T: 元素</para>
         /// </param>
         /// <typeparam name="T">元素类型</typeparam>
-        /// <exception cref="ArgumentNullException"> <paramref name="this" /> is null</exception>
-        /// <exception cref="ArgumentNullException"> <paramref name="action" /> is null</exception>
+        /// <exception cref="ArgumentNullException"> <paramref name="this" /> </exception>
+        /// <exception cref="ArgumentNullException"> <paramref name="action" /> </exception>
         /// <example>
         ///     <code>
         ///         <![CDATA[
@@ -58,10 +59,10 @@ namespace Neuz.DevKit.Extensions.IEnumerableExt
         ///         ]]>
         ///     </code>
         /// </example>
-        public static void ForEach<T>(this IEnumerable<T> @this, Action<T> action)
+        public static void ForEach<T>([NotNull] this IEnumerable<T> @this, [NotNull] Action<T> action)
         {
-            if (@this == null) throw new ArgumentNullException(nameof(@this), $"{nameof(@this)} is null");
-            if (action == null) throw new ArgumentNullException(nameof(action), $"{nameof(action)} is null");
+            if (@this == null) throw new ArgumentNullException(nameof(@this));
+            if (action == null) throw new ArgumentNullException(nameof(action));
             foreach (var item in @this) action(item);
         }
     }
