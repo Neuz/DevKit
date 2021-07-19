@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MSTest.Extensions.Contracts;
-using Neuz.DevKit.Extensions.IEnumerable;
 
-// ReSharper disable CheckNamespace
 // ReSharper disable ExpressionIsAlwaysNull
 // ReSharper disable UnusedParameter.Local
 
-namespace Neuz.DevKit.Extensions.EnumerableExt.Tests
+namespace Neuz.DevKit.Extensions.Test
 {
     [TestClass]
     public class EnumerableExtTests

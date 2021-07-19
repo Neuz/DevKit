@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Neuz.DevKit.Extensions.IEnumerable
+namespace Neuz.DevKit.Extensions
 {
     public static partial class EnumerableExt
     {

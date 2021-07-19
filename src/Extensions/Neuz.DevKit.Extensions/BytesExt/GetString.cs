@@ -2,7 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
-namespace Neuz.DevKit.Extensions.Bytes
+namespace Neuz.DevKit.Extensions
 {
     public static partial class BytesExt
     {

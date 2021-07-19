@@ -3,9 +3,7 @@ using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MSTest.Extensions.Contracts;
 
-// ReSharper disable CheckNamespace
-
-namespace Neuz.DevKit.Extensions.Bytes.Tests
+namespace Neuz.DevKit.Extensions.Test
 {
     [TestClass()]
     public class BytesExtTests
