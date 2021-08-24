@@ -26,8 +26,8 @@ namespace Build
             #region Extensions
 
             var projectName = "Neuz.DevKit.Extensions";
-            var extensionsProject = "src/Extensions/Neuz.DevKit.Extensions/Neuz.DevKit.Extensions.csproj";
-            var extensionsTestProject = "src/Extensions/Neuz.DevKit.Extensions.Test/Neuz.DevKit.Extensions.test.csproj";
+            var extensionsProject = "./src/Extensions/Neuz.DevKit.Extensions/Neuz.DevKit.Extensions.csproj";
+            var extensionsTestProject = "./src/Extensions/Neuz.DevKit.Extensions.Test/Neuz.DevKit.Extensions.test.csproj";
             var extensionsOutputDir = $"{OutputDir}/{projectName}";
             var extensionsTestResultDir = $"{extensionsOutputDir}/testResult";
             var extensionsNugetDir = $"{extensionsOutputDir}/nuget";
