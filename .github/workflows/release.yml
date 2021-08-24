@@ -1,0 +1,25 @@
+name: release
+
+on:
+  push:
+    tags:
+    - '**'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 获取Tag作为版本号
+      run: echo 'RELEASE_VERSION=${GITHUB_REF#refs/*/}' >> $GITHUB_ENV
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - name: Install FlubuCore
+      run: dotnet tool install --global FlubuCore.Tool
+    - name: 发布
+      run: |
+        echo $RELEASE_VERSION
+        flubu publish -version=${{ env.RELEASE_VERSION }} -nugetKey=${{ secrets.NUGET_API_KEY }}
+        
+
