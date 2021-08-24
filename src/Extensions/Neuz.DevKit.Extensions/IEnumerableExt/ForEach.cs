@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Neuz.DevKit.Extensions
 {
@@ -29,7 +28,7 @@ namespace Neuz.DevKit.Extensions
         ///         ]]>
         ///     </code>
         /// </example>
-        public static void ForEach<T>([NotNull] this IEnumerable<T> @this, [NotNull] Action<int, T> action)
+        public static void ForEach<T>(this IEnumerable<T> @this, Action<int, T> action)
         {
             if (@this == null) throw new ArgumentNullException(nameof(@this));
             if (action == null) throw new ArgumentNullException(nameof(action));
@@ -59,7 +58,7 @@ namespace Neuz.DevKit.Extensions
         ///         ]]>
         ///     </code>
         /// </example>
-        public static void ForEach<T>([NotNull] this IEnumerable<T> @this, [NotNull] Action<T> action)
+        public static void ForEach<T>(this IEnumerable<T> @this, Action<T> action)
         {
             if (@this == null) throw new ArgumentNullException(nameof(@this));
             if (action == null) throw new ArgumentNullException(nameof(action));

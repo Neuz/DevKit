@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensioins", "Extensioins"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Neuz.DevKit.Extensions.Test", "Extensions\Neuz.DevKit.Extensions.Test\Neuz.DevKit.Extensions.Test.csproj", "{45B36132-F557-4119-AF83-4C33E45D489B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildScript", "..\build\BuildScript.csproj", "{739FD553-84D5-45E1-9388-00D85DE8DFF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Build", "..\build\Build.csproj", "{94CE2034-00E2-4E97-ACAA-3132E2D44907}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +25,10 @@ Global
 		{45B36132-F557-4119-AF83-4C33E45D489B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45B36132-F557-4119-AF83-4C33E45D489B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45B36132-F557-4119-AF83-4C33E45D489B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{739FD553-84D5-45E1-9388-00D85DE8DFF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{739FD553-84D5-45E1-9388-00D85DE8DFF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{739FD553-84D5-45E1-9388-00D85DE8DFF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{739FD553-84D5-45E1-9388-00D85DE8DFF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94CE2034-00E2-4E97-ACAA-3132E2D44907}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94CE2034-00E2-4E97-ACAA-3132E2D44907}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94CE2034-00E2-4E97-ACAA-3132E2D44907}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94CE2034-00E2-4E97-ACAA-3132E2D44907}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

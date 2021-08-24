@@ -5,12 +5,15 @@ using FlubuCore.Context;
 using FlubuCore.Context.Attributes.BuildProperties;
 using FlubuCore.Scripting;
 
-namespace BuildScript
+namespace Build
 {
     public class BuildScript : DefaultBuildScript
     {
-        [FromArg("nugetKey")]
+        [FromArg("nugetKey", "NuGet平台Api Key")]
         public string NuGetKey { get; set; }
+
+        [FromArg("version", "NuGet包版本")]
+        public string Version { get; set; } = "0.0.1";
 
         [BuildConfiguration]
         public string BuildConfiguration { get; set; } = "Release";
@@ -27,11 +30,13 @@ namespace BuildScript
             var extensionsTestProject = "src/Extensions/Neuz.DevKit.Extensions.Test/Neuz.DevKit.Extensions.test.csproj";
             var extensionsOutputDir = $"{OutputDir}/{projectName}";
             var extensionsTestResultDir = $"{extensionsOutputDir}/testResult";
+            var extensionsNugetDir = $"{extensionsOutputDir}/nuget";
 
             context.CreateTarget("Extensions.clean")
                    .SetDescription($"清理 - [{projectName}]")
                    .AddCoreTask(x => x.Clean()
-                                      .Project(extensionsProject));
+                                      .Project(extensionsProject)
+                                      .AddDirectoryToClean(extensionsOutputDir, true));
 
             context.CreateTarget("Extensions.restore")
                    .SetDescription($"还原 - [{projectName}]")
@@ -48,7 +53,7 @@ namespace BuildScript
             context.CreateTarget("Extensions.test")
                    .SetDescription($"测试 - [{projectName}]")
                    .AddCoreTask(x => x.Clean().Project(extensionsTestProject)
-                                      .AddDirectoryToClean(extensionsTestResultDir,true))
+                                      .AddDirectoryToClean(extensionsTestResultDir, true))
                    .AddCoreTask(x => x.Restore().Project(extensionsTestProject))
                    .AddCoreTask(x => x.Test()
                                       .Project(extensionsTestProject)
@@ -56,7 +61,19 @@ namespace BuildScript
 
             context.CreateTarget("Extensions.pack")
                    .SetDescription($"构建NuGet包 -[{projectName}]")
+                   .DependsOn("Extensions.build")
+                   .DependsOn("Extensions.test")
+                   .AddCoreTask(x => x.Pack()
+                                      .Project(extensionsProject)
+                                      .PackageVersion(Version)
+                                      .OutputDirectory(extensionsNugetDir));
 
+            context.CreateTarget("Extensions.publish")
+                   .SetDescription($"发布NuGet包 - [{projectName}]")
+                   .DependsOn("Extensions.pack")
+                   .AddCoreTask(x => x.NugetPush($"{extensionsNugetDir}/Neuz.DevKit.Extensions.{Version}.nupkg")
+                                      .ServerUrl("https://www.nuget.org/api/v2/package")
+                                      .ApiKey(NuGetKey));
 
             context.CreateTarget("Extensions")
                    .SetDescription($"默认 - [{projectName}]")

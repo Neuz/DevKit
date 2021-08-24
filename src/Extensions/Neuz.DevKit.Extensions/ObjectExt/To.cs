@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Neuz.DevKit.Extensions
 {
@@ -12,7 +11,7 @@ namespace Neuz.DevKit.Extensions
         /// <param name="this"></param>
         /// <param name="defaultValue">默认值</param>
         /// <returns>若转换失败，返回 默认值 <see cref="defaultValue"/></returns>
-        public static T To<T>([NotNull] this object @this, [NotNull] T defaultValue) where T : IConvertible
+        public static T To<T>(this object @this, T defaultValue) where T : IConvertible
         {
             if (@this == null || @this == DBNull.Value) return defaultValue;
             if (typeof(T).IsEnum)
@@ -38,7 +37,7 @@ namespace Neuz.DevKit.Extensions
         /// </para>
         /// </param>
         /// <returns>若转换失败，返回 默认值 <paramref name="func"/></returns>
-        public static T To<T>([NotNull] this object @this, [NotNull] Func<object, T> func) where T : IConvertible
+        public static T To<T>(this object @this, Func<object, T> func) where T : IConvertible
         {
             return @this.To<T>(func.Invoke(@this));
         }
@@ -49,7 +48,7 @@ namespace Neuz.DevKit.Extensions
         /// <typeparam name="T"><see cref="IConvertible" /></typeparam>
         /// <param name="this"></param>
         /// <returns>转换失败则返回 <c>default(<typeparamref name="T" />)</c></returns>
-        public static T To<T>([NotNull] this object @this) where T : IConvertible
+        public static T To<T>(this object @this) where T : IConvertible
         {
             return @this.To<T>(default(T));
         }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace Neuz.DevKit.Extensions
@@ -29,7 +28,7 @@ namespace Neuz.DevKit.Extensions
         ///         ]]>
         ///     </code>
         /// </example>
-        public static string GetString([NotNull] this byte[] @this, [NotNull] Encoding encoding)
+        public static string GetString(this byte[] @this, Encoding encoding)
         {
             if (@this == null) throw new ArgumentNullException(nameof(@this));
             if (encoding == null) throw new ArgumentNullException(nameof(encoding));
@@ -56,7 +55,7 @@ namespace Neuz.DevKit.Extensions
         ///         ]]>
         ///     </code>
         /// </example>
-        public static string GetString([NotNull] this byte[] @this)
+        public static string GetString(this byte[] @this)
         {
             return @this.GetString(Encoding.UTF8);
         }
