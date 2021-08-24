@@ -17,7 +17,7 @@ namespace Neuz.DevKit.Extensions.Test
         [ContractTestCase]
         public void To_Test_1()
         {
-            "string to numeric".Test(() =>
+            "Object.To_使用_string -> numeric".Test(() =>
             {
                 // null
                 string input = null;
@@ -45,14 +45,14 @@ namespace Neuz.DevKit.Extensions.Test
             });
 
 
-            "numeric to string".Test(() =>
+            "Object.To_使用_numeric -> string".Test(() =>
             {
                 Assert.AreEqual("123", 123L.To("default"));
 
                 Assert.AreEqual("123", 123m.To("default"));
             });
 
-            "string to datetime".Test(() =>
+            "Object.To_使用_string -> datetime".Test(() =>
             {
                 Assert.AreEqual(new DateTime(2018, 1, 1, 23, 59, 59), "2018-01-01 23:59:59".To(DateTime.MinValue));
 
@@ -63,7 +63,7 @@ namespace Neuz.DevKit.Extensions.Test
         [ContractTestCase]
         public void To_Test_2()
         {
-            "string to numeric".Test(() =>
+            "Object.To_使用_string -> numeric default".Test(() =>
             {
                 // null
                 string input = null;
@@ -95,7 +95,7 @@ namespace Neuz.DevKit.Extensions.Test
         [ContractTestCase]
         public void To_Test_3()
         {
-            "object convert".Test(() =>
+            "Object.To_使用_object convert".Test(() =>
             {
                 // string to int
                 Assert.AreEqual(123, "123".To<int>(o => -99));
@@ -125,7 +125,7 @@ namespace Neuz.DevKit.Extensions.Test
         [ContractTestCase]
         public void As_Test_1()
         {
-            "object as".Test(() =>
+            "Object.As_使用".Test(() =>
             {
                 var myClass2 = new MyClass2 {Name = "Aio", Title = "xxx"};
                 Assert.AreEqual("Aio", myClass2.As<MyClass>().Name);

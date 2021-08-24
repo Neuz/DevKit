@@ -10,21 +10,21 @@ namespace Neuz.DevKit.Extensions.Test
         [ContractTestCase]
         public void SetTimeTest_1()
         {
-            "Case_使用_1".Test(() =>
+            "SetTime_使用_1".Test(() =>
             {
                 var dt = new DateTime(2021, 12, 31);
                 var expected = new DateTime(2021, 12, 31, 1, 2, 3, 999);
                 Assert.AreEqual(expected, dt.SetTime(1, 2, 3, 999));
             });
 
-            "Case_使用_2".Test(() =>
+            "SetTime_使用_2".Test(() =>
             {
                 var dt = new DateTime(2021, 12, 31);
                 var expected = new DateTime(2021, 12, 31, 0, 0, 0);
                 Assert.AreEqual(expected, dt.SetTime());
             });
 
-            "Case_异常_1".Test(() =>
+            "SetTime_异常_1".Test(() =>
             {
                 var dt = new DateTime(2021, 12, 31);
                 Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
@@ -41,7 +41,7 @@ namespace Neuz.DevKit.Extensions.Test
         [ContractTestCase]
         public void EndOfDayTest_1()
         {
-            "Case_使用_1".Test(() =>
+            "EndOfDay_使用_1".Test(() =>
             {
                 var dt = new DateTime(2021, 12, 31);
                 var end = dt.EndOfDay();
@@ -55,7 +55,7 @@ namespace Neuz.DevKit.Extensions.Test
         [ContractTestCase]
         public void StartOfDayTest_1()
         {
-            "Case_使用_1".Test(() =>
+            "StartOfDay_使用_1".Test(() =>
             {
                 var dt = new DateTime(2021, 12, 31);
                 var rs = dt.StartOfDay();
@@ -69,7 +69,7 @@ namespace Neuz.DevKit.Extensions.Test
         [ContractTestCase]
         public void StartOfWeekTest_1()
         {
-            "Case_使用_1".Test(() =>
+            "StartOfWeek_使用_1".Test(() =>
             {
                 var dt = new DateTime(2019, 4, 1, 1, 2, 3);
                 var rs = dt.StartOfWeek(DayOfWeek.Sunday);
@@ -86,7 +86,7 @@ namespace Neuz.DevKit.Extensions.Test
         [ContractTestCase]
         public void EndOfWeekTest_1()
         {
-            "Case_使用_1".Test(() =>
+            "EndOfWeek_使用_1".Test(() =>
             {
                 var dt = new DateTime(2019, 4, 1, 1, 2, 3);
                 var rs = dt.EndOfWeek(DayOfWeek.Friday);

@@ -5,13 +5,13 @@ using MSTest.Extensions.Contracts;
 
 namespace Neuz.DevKit.Extensions.Test
 {
-    [TestClass()]
+    [TestClass]
     public class BytesExtTests
     {
         [ContractTestCase]
         public void GetStringTest_1()
         {
-            "正常使用_1".Test(() =>
+            "byte[].GetString_使用_1".Test(() =>
             {
                 var str = "abcd";
                 var b = Encoding.UTF8.GetBytes(str);
@@ -19,7 +19,7 @@ namespace Neuz.DevKit.Extensions.Test
             });
 
 
-            "正常使用_2".Test(() =>
+            "byte[].GetString_使用_2".Test(() =>
             {
                 var str = "abcd";
                 var encoding = Encoding.ASCII;
@@ -27,7 +27,7 @@ namespace Neuz.DevKit.Extensions.Test
                 Assert.AreEqual(str, b.GetString(encoding));
             });
 
-            "异常检查_1".Test(() =>
+            "byte[].GetString_异常_1".Test(() =>
             {
                 var str = "abcd";
                 var b = Encoding.UTF8.GetBytes(str);
@@ -38,7 +38,7 @@ namespace Neuz.DevKit.Extensions.Test
                 });
             });
 
-            "异常检查_2".Test(() =>
+            "byte[].GetString_异常_2".Test(() =>
             {
                 var str = "abcd";
                 var encoding = Encoding.ASCII;
@@ -49,7 +49,7 @@ namespace Neuz.DevKit.Extensions.Test
                 });
             });
 
-            "异常检查_3".Test(() =>
+            "byte[].GetString_异常_3".Test(() =>
             {
                 var str = "abcd";
                 var b = Encoding.UTF8.GetBytes(str);
