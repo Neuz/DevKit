@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Neuz.DevKit.Extensions\Neuz.DevKit.Extensions.csproj" />
+    <ProjectReference Include="../Neuz.DevKit.Extensions/Neuz.DevKit.Extensions.csproj" />
   </ItemGroup>
 
 </Project>
