@@ -75,12 +75,18 @@ namespace Build
                                       .ServerUrl("https://www.nuget.org/api/v2/package")
                                       .ApiKey(NuGetKey));
 
-            context.CreateTarget("Extensions")
-                   .SetDescription($"默认 - [{projectName}]")
+            #endregion
+
+            context.CreateTarget("build")
+                   .SetDescription("默认构建")
+                   .SetAsDefault()
                    .DependsOn("Extensions.build")
                    .DependsOn("Extensions.test");
 
-            #endregion
+            context.CreateTarget("publish")
+                   .SetDescription("发布")
+                   .DependsOn("build")
+                   .DependsOn("Extensions.publish");
         }
     }
 }

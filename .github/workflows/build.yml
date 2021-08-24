@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false  
       matrix:
-        os: [windows-latest, ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest]
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
@@ -24,6 +24,6 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Install FlubuCore
-      run: dotnet tool install --global FlubuCore.GlobalTool
+      run: dotnet tool install --global FlubuCore.Tool
     - name: 默认构建
       run: flubu build

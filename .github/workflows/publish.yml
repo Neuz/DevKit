@@ -1,0 +1,20 @@
+name: publish
+
+on:
+  release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - name: Install FlubuCore
+      run: dotnet tool install --global FlubuCore.Tool
+    - name: 发布
+      run: echo ${{ env.RELEASE_VERSION }}
