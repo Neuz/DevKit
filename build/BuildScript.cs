@@ -52,8 +52,6 @@ namespace Build
 
             context.CreateTarget("Extensions.test")
                    .SetDescription($"测试 - [{projectName}]")
-                   .AddCoreTask(x => x.Clean().Project(extensionsTestProject)
-                                      .AddDirectoryToClean(extensionsTestResultDir, true))
                    .AddCoreTask(x => x.Restore().Project(extensionsTestProject))
                    .AddCoreTask(x => x.Test()
                                       .Project(extensionsTestProject)
