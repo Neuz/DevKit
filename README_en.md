@@ -1,6 +1,4 @@
-# DevKit
-
----
+# ddns-dnspod
 
 Popular .Net extension libs
 
@@ -11,19 +9,19 @@ Popular .Net extension libs
 ---
 
 
-## 内容列表
+## Table of Contents
 
-- [DevKit](#devkit)
-  - [内容列表](#内容列表)
-  - [用法](#用法)
+- [ddns-dnspod](#ddns-dnspod)
+  - [Table of Contents](#table-of-contents)
+  - [Usage](#usage)
     - [Package Manager](#package-manager)
     - [Nuget cli](#nuget-cli)
     - [.Net cli](#net-cli)
-  - [更新日志](#更新日志)
-  - [相关](#相关)
-  - [许可](#许可)
+  - [Changelog](#changelog)
+  - [Related](#related)
+  - [License](#license)
 
-## 用法
+## Usage
 
 ### Package Manager
 
@@ -37,12 +35,12 @@ Popular .Net extension libs
 
     > dotnet add package Neuz.DevKit.Extensions
 
-## 更新日志
+## Changelog
 
 
-## 相关
+## Related
 
 
-## 许可
+## License
 
 [MIT License](LICENSE) © 2021 Neuz
