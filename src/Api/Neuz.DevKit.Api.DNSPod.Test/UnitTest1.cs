@@ -10,7 +10,7 @@ namespace Neuz.DevKit.Api.DNSPod.Test
         {
             var api = new DnsPodApi(new DnsPodSettings
             {
-                LoginToken   = "251492,805e3859330772e95839c1092d85a5dc",
+                LoginToken   = "254344,9b8314a8f77181517ccccbeb09550ef0",
             });
             var r = api.Info.Version().Result;
 

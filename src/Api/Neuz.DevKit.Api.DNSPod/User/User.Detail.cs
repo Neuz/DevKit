@@ -36,6 +36,12 @@ namespace Neuz.DevKit.Api.DNSPod
                 [JsonProperty("user")]
                 public PartUser User { get; set; }
 
+                /// <summary>
+                /// 仅当前是代理用户时，返回该字段，包含代理及其名下用户信息
+                /// </summary>
+                [JsonProperty("agent")]
+                public PartAgent Agent { get; set; }
+
                 public class PartUser
                 {
                     /// <summary>
@@ -100,6 +106,56 @@ namespace Neuz.DevKit.Api.DNSPod
                     /// </summary>
                     [JsonProperty("telephone_verified")]
                     public string TelephoneVerified { get; set; }
+
+                    /// <summary>
+                    /// 是否绑定微信
+                    /// <para>yes: 通过；no: 未通过</para>
+                    /// </summary>
+                    [JsonProperty("weixin_binded")]
+                    public string WeixinBinded { get; set; }
+
+                    /// <summary>
+                    /// 是否正在申请成为代理：
+                    /// <para>true: 是；false: 否</para>
+                    /// </summary>
+                    [JsonProperty("agent_pending")]
+                    public bool AgentPending { get; set; }
+
+                    /// <summary>
+                    /// 账号余额
+                    /// </summary>
+                    [JsonProperty("balance")]
+                    public decimal Balance { get; set; }
+
+                    /// <summary>
+                    /// 剩余短信条数
+                    /// </summary>
+                    [JsonProperty("smsbalance")]
+                    public decimal SmsBalance { get; set; }
+
+                    /// <summary>
+                    /// 账号等级,
+                    /// <para>
+                    /// 按照用户账号下域名等级排序, 选取一个最高等级为账号等级, 具体对应情况参见域名等级
+                    /// </para>
+                    /// </summary>
+                    [JsonProperty("user_grade")]
+                    public string UserGrade { get; set; }
+                }
+
+                public class PartAgent
+                {
+                    [JsonProperty("discount")]
+                    public string Discount { get; set; }
+
+                    [JsonProperty("points")]
+                    public string Points { get; set; }
+
+                    [JsonProperty("balance_limit")]
+                    public string BalanceLimit { get; set; }
+
+                    [JsonProperty("users")]
+                    public string Users { get; set; }
                 }
             }
         }
