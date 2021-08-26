@@ -144,5 +144,42 @@ namespace Neuz.DevKit.Api.DNSPod.Test
                 Assert.AreEqual("8", result.Status.Code);
             });
         }
+
+        [ContractTestCase]
+        public void Domain_Status()
+        {
+            "Domain.Status.1".Test(() =>
+            {
+                var result = _api.Domain.Status("enable").Result;
+
+                Assert.IsNotNull(result.Json);
+                Assert.IsNotNull(result.Original);
+                Assert.AreEqual(HttpStatusCode.OK, result.Original.StatusCode);
+
+                Assert.AreEqual("6", result.Status.Code);
+            });
+
+            "Domain.Status.2".Test(() =>
+            {
+                var result = _api.Domain.Status("enable","aaa.com").Result;
+
+                Assert.IsNotNull(result.Json);
+                Assert.IsNotNull(result.Original);
+                Assert.AreEqual(HttpStatusCode.OK, result.Original.StatusCode);
+
+                Assert.AreEqual("7", result.Status.Code);
+            });
+
+            "Domain.Status.2".Test(() =>
+            {
+                var result = _api.Domain.Status("", "less.host").Result;
+
+                Assert.IsNotNull(result.Json);
+                Assert.IsNotNull(result.Original);
+                Assert.AreEqual(HttpStatusCode.OK, result.Original.StatusCode);
+
+                Assert.AreEqual("1", result.Status.Code);
+            });
+        }
     }
 }

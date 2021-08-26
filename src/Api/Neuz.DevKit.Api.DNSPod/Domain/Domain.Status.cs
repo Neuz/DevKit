@@ -12,14 +12,22 @@ namespace Neuz.DevKit.Api.DNSPod
     public partial class Domain
     {
         /// <summary>
-        /// 删除域名
+        /// 设置域名状态
         /// <para>
         /// 参数中域名ID和域名, 提交其中一个即可
         /// </para>
         /// <para>
-        /// https://www.dnspod.cn/docs/domains.html#domain-remove
+        /// https://www.dnspod.cn/docs/domains.html#domain-status
         /// </para>
         /// </summary>
+        /// <param name="status">
+        /// 域名状态
+        /// <para>实际测试，传入<c>disable</c>为暂停解析，其他的字符串都是启用解析</para>
+        /// <list type="bullet|number|table">
+        ///     <item><term>"enable"</term><description>启用</description></item>
+        ///     <item><term>"disable"</term><description>暂停</description></item>
+        /// </list>
+        /// </param>
         /// <param name="domain">域名</param>
         /// <param name="domainId">域名ID</param>
         /// <returns>
@@ -33,11 +41,13 @@ namespace Neuz.DevKit.Api.DNSPod
         ///     <item><term>21</term><description>域名已锁定</description></item>
         /// </list>
         /// </returns>
-        public async Task<CommonResponse> Remove(string domain = null, string domainId = null)
+        public async Task<CommonResponse> Status(string status, string domain = null, string domainId = null)
         {
-            var url = Settings.BaseUrl.AppendPathSegment("Domain.Remove");
+            var url = Settings.BaseUrl.AppendPathSegment("Domain.Status");
 
             var postData = Settings.GetCommonParameters();
+            
+            postData["status"]    = status;
             postData["domain"]    = domain;
             postData["domain_id"] = domainId;
 
@@ -45,13 +55,13 @@ namespace Neuz.DevKit.Api.DNSPod
                                     .PostUrlEncodedAsync(postData);
 
             var responseString = await response.GetStringAsync();
-            var result = JsonConvert.DeserializeObject<ResponseDomainRemove>(responseString);
+            var result = JsonConvert.DeserializeObject<ResponseDomainStatus>(responseString);
             result.Original = response.ResponseMessage;
             result.Json     = JObject.Parse(responseString);
             return result;
         }
 
-        public class ResponseDomainRemove : CommonResponse
+        public class ResponseDomainStatus : CommonResponse
         {
         }
     }
