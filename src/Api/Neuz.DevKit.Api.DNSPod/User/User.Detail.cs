@@ -2,6 +2,7 @@
 using Flurl;
 using Flurl.Http;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Neuz.DevKit.Api.DNSPod
 {
@@ -16,18 +17,20 @@ namespace Neuz.DevKit.Api.DNSPod
         /// <returns></returns>
         public async Task<CommonResponse> Detail()
         {
-            var url = _settings.BaseUrl.AppendPathSegment("User.Detail");
+            var url = Settings.BaseUrl.AppendPathSegment("User.Detail");
 
-            var postData = _settings.GetCommonParameters();
+            var postData = Settings.GetCommonParameters();
 
-            var rr = await url.WithHeaders(_settings.HttpHeaders)
-                              .PostUrlEncodedAsync(postData);
+            var response = await url.WithHeaders(Settings.HttpHeaders)
+                                    .PostUrlEncodedAsync(postData);
 
-            var result = await rr.GetJsonAsync<ResponseUserDetail>();
-            result.Original = rr.ResponseMessage;
+            var responseString = await response.GetStringAsync();
+            var result = JsonConvert.DeserializeObject<ResponseUserDetail>(responseString);
+            result.Original = response.ResponseMessage;
+            result.Json     = JObject.Parse(responseString);
             return result;
         }
-        
+
         public class ResponseUserDetail : CommonResponse
         {
             [JsonProperty("info")]

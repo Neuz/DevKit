@@ -1,6 +1,8 @@
 ﻿using System.Threading.Tasks;
 using Flurl;
 using Flurl.Http;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Neuz.DevKit.Api.DNSPod
 {
@@ -13,20 +15,22 @@ namespace Neuz.DevKit.Api.DNSPod
         /// <returns></returns>
         public async Task<CommonResponse> Version()
         {
-            var url = _settings.BaseUrl.AppendPathSegment("Info.Version");
+            var url = Settings.BaseUrl.AppendPathSegment("Info.Version");
 
-            var postData = _settings.GetCommonParameters();
+            var postData = Settings.GetCommonParameters();
 
-            var rr = await url.WithHeaders(_settings.HttpHeaders)
-                              .PostUrlEncodedAsync(postData);
+            var response = await url.WithHeaders(Settings.HttpHeaders)
+                                    .PostUrlEncodedAsync(postData);
 
-            var result = await rr.GetJsonAsync<ResponseVersion>();
-            result.Original = rr.ResponseMessage;
+            var responseString = await response.GetStringAsync();
+            var result = JsonConvert.DeserializeObject<ResponseInfoVersion>(responseString);
+            result.Original = response.ResponseMessage;
+            result.Json     = JObject.Parse(responseString);
             return result;
         }
 
 
-        public class ResponseVersion : CommonResponse
+        public class ResponseInfoVersion : CommonResponse
         {
         }
     }

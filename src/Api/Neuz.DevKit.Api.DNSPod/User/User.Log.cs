@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Flurl;
 using Flurl.Http;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Neuz.DevKit.Api.DNSPod
 {
@@ -18,18 +18,20 @@ namespace Neuz.DevKit.Api.DNSPod
         /// <returns></returns>
         public async Task<CommonResponse> Log()
         {
-            var url = _settings.BaseUrl.AppendPathSegment("User.Log");
+            var url = Settings.BaseUrl.AppendPathSegment("User.Log");
 
-            var postData = _settings.GetCommonParameters();
+            var postData = Settings.GetCommonParameters();
 
-            var rr = await url.WithHeaders(_settings.HttpHeaders)
-                              .PostUrlEncodedAsync(postData);
+            var response = await url.WithHeaders(Settings.HttpHeaders)
+                                    .PostUrlEncodedAsync(postData);
 
-            var result = await rr.GetJsonAsync<ResponseUserLog>();
-            result.Original = rr.ResponseMessage;
+            var responseString = await response.GetStringAsync();
+            var result = JsonConvert.DeserializeObject<ResponseUserLog>(responseString);
+            result.Original = response.ResponseMessage;
+            result.Json     = JObject.Parse(responseString);
             return result;
         }
-        
+
         public class ResponseUserLog : CommonResponse
         {
             [JsonProperty("log")]

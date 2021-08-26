@@ -1,5 +1,7 @@
-﻿using System.Net.Http;
+﻿using System.Collections.Generic;
+using System.Net.Http;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Neuz.DevKit.Api.DNSPod
 {
@@ -14,6 +16,12 @@ namespace Neuz.DevKit.Api.DNSPod
         /// </summary>
         [JsonIgnore]
         public HttpResponseMessage Original;
+
+        /// <summary>
+        /// 原始Json对象
+        /// </summary>
+        [JsonIgnore]
+        public JObject Json;
 
         /// <summary>
         /// 状态
@@ -40,6 +48,8 @@ namespace Neuz.DevKit.Api.DNSPod
             /// </summary>
             [JsonProperty("created_at")]
             public string CreatedAt { get; set; }
+
+
         }
     }
 }
