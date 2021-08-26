@@ -211,5 +211,21 @@ namespace Neuz.DevKit.Api.DNSPod.Test
                 Assert.AreEqual("1", result.Status.Code);
             });
         }
+
+        [ContractTestCase]
+        public void Domain_SearchEnginePush()
+        {
+            "Domain.Searchenginepush.1".Test(() =>
+            {
+                
+                // var result = _api.Domain.Log("less.host").Result;
+                //
+                // Assert.IsNotNull(result.Json);
+                // Assert.IsNotNull(result.Original);
+                // Assert.AreEqual(HttpStatusCode.OK, result.Original.StatusCode);
+                //
+                // Assert.AreEqual("1", result.Status.Code);
+            });
+        }
     }
 }
