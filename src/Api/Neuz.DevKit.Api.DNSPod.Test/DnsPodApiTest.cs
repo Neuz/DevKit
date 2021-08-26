@@ -161,7 +161,7 @@ namespace Neuz.DevKit.Api.DNSPod.Test
 
             "Domain.Status.2".Test(() =>
             {
-                var result = _api.Domain.Status("enable","aaa.com").Result;
+                var result = _api.Domain.Status("enable", "aaa.com").Result;
 
                 Assert.IsNotNull(result.Json);
                 Assert.IsNotNull(result.Original);
@@ -173,6 +173,36 @@ namespace Neuz.DevKit.Api.DNSPod.Test
             "Domain.Status.2".Test(() =>
             {
                 var result = _api.Domain.Status("", "less.host").Result;
+
+                Assert.IsNotNull(result.Json);
+                Assert.IsNotNull(result.Original);
+                Assert.AreEqual(HttpStatusCode.OK, result.Original.StatusCode);
+
+                Assert.AreEqual("1", result.Status.Code);
+            });
+        }
+
+        [ContractTestCase]
+        public void Domain_Info()
+        {
+            "Domain.Info.1".Test(() =>
+            {
+                var result = _api.Domain.Info("less.host").Result;
+
+                Assert.IsNotNull(result.Json);
+                Assert.IsNotNull(result.Original);
+                Assert.AreEqual(HttpStatusCode.OK, result.Original.StatusCode);
+
+                Assert.AreEqual("1", result.Status.Code);
+            });
+        }
+
+        [ContractTestCase]
+        public void Domain_Log()
+        {
+            "Domain.Log.1".Test(() =>
+            {
+                var result = _api.Domain.Log("less.host").Result;
 
                 Assert.IsNotNull(result.Json);
                 Assert.IsNotNull(result.Original);
