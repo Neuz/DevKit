@@ -20,13 +20,13 @@ namespace Neuz.DevKit.Api.DNSPod
             var rr = await url.WithHeaders(_settings.HttpHeaders)
                               .PostUrlEncodedAsync(postData);
 
-            var result = await rr.GetJsonAsync<VersionResponse>();
+            var result = await rr.GetJsonAsync<ResponseVersion>();
             result.Original = rr.ResponseMessage;
             return result;
         }
 
 
-        public class VersionResponse : CommonResponse
+        public class ResponseVersion : CommonResponse
         {
         }
     }

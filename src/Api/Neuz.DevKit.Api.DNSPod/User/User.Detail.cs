@@ -5,11 +5,13 @@ using Newtonsoft.Json;
 
 namespace Neuz.DevKit.Api.DNSPod
 {
-    public partial class User : BaseApi
+    public partial class User
     {
         /// <summary>
         /// 获取帐户信息
-        /// <para>https://www.dnspod.cn/docs/accounts.html#user-detail</para>
+        /// <para>
+        /// https://www.dnspod.cn/docs/accounts.html#user-detail
+        /// </para>
         /// </summary>
         /// <returns></returns>
         public async Task<CommonResponse> Detail()
@@ -21,12 +23,12 @@ namespace Neuz.DevKit.Api.DNSPod
             var rr = await url.WithHeaders(_settings.HttpHeaders)
                               .PostUrlEncodedAsync(postData);
 
-            var result = await rr.GetJsonAsync<UserDetailResponse>();
+            var result = await rr.GetJsonAsync<ResponseUserDetail>();
             result.Original = rr.ResponseMessage;
             return result;
         }
         
-        public class UserDetailResponse : CommonResponse
+        public class ResponseUserDetail : CommonResponse
         {
             [JsonProperty("info")]
             public PartInfo Info { get; set; }
