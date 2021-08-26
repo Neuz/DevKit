@@ -14,7 +14,7 @@ namespace Neuz.DevKit.Api.DNSPod.Test
         });
 
         [ContractTestCase]
-        public void Info()
+        public void Info_Version()
         {
             "Info.Version".Test(() =>
             {
@@ -29,7 +29,7 @@ namespace Neuz.DevKit.Api.DNSPod.Test
         }
 
         [ContractTestCase]
-        public void User()
+        public void User_Detail()
         {
             "User.Detail".Test(() =>
             {
@@ -42,7 +42,11 @@ namespace Neuz.DevKit.Api.DNSPod.Test
                 Assert.AreEqual("1", result.Status.Code);
                 Assert.IsNotNull(((User.ResponseUserDetail) result).Info);
             });
+        }
 
+        [ContractTestCase]
+        public void User_Log()
+        {
             "User.Log".Test(() =>
             {
                 var result = _api.User.Log().Result;
@@ -217,8 +221,37 @@ namespace Neuz.DevKit.Api.DNSPod.Test
         {
             "Domain.Searchenginepush.1".Test(() =>
             {
-                
                 // var result = _api.Domain.Log("less.host").Result;
+                //
+                // Assert.IsNotNull(result.Json);
+                // Assert.IsNotNull(result.Original);
+                // Assert.AreEqual(HttpStatusCode.OK, result.Original.StatusCode);
+                //
+                // Assert.AreEqual("1", result.Status.Code);
+            });
+        }
+
+        [ContractTestCase]
+        public void DomainShare_Create()
+        {
+            "DomainShare.Create".Test(() =>
+            {
+                // var result = _api.Info.Version().Result;
+                //
+                // Assert.IsNotNull(result.Json);
+                // Assert.IsNotNull(result.Original);
+                // Assert.AreEqual(HttpStatusCode.OK, result.Original.StatusCode);
+                //
+                // Assert.AreEqual("1", result.Status.Code);
+            });
+        }
+
+        [ContractTestCase]
+        public void DomainShare_List()
+        {
+            "DomainShare.List".Test(() =>
+            {
+                // var result = _api.Info.Version().Result;
                 //
                 // Assert.IsNotNull(result.Json);
                 // Assert.IsNotNull(result.Original);
