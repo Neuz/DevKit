@@ -9,7 +9,7 @@ using MSTest.Extensions.Contracts;
 
 namespace Neuz.DevKit.Extensions.Test
 {
-    [TestClass()]
+    [TestClass]
     public class ObjectExtTests
     {
         #region To
