@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Neuz.DevKit.Extensions
 {
@@ -7,24 +8,10 @@ namespace Neuz.DevKit.Extensions
         /// <summary>
         /// 如果为空抛出 <see cref="ArgumentNullException"/>
         /// </summary>
-        /// <param name="this"></param>
-        /// <param name="message"></param>
-        public static void ThrowIfNull(object @this, string message=null)
-        {
-            message ??= nameof(@this);
-            if (@this == null) throw new ArgumentNullException(message);
-        }
-
-        /// <summary>
-        /// 如果为空抛出 <see cref="ArgumentNullException"/>
-        /// </summary>
         /// <param name="objects"></param>
         public static void ThrowIfNull(params object[] objects)
         {
-            foreach (var o in objects)
-            {
-                ThrowIfNull(o);
-            }
+            if (objects.Any(obj => obj == null)) throw new ArgumentNullException(null, "参数不能为空");
         }
     }
 }
