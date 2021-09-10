@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MSTest.Extensions.Contracts;
 
@@ -52,6 +53,15 @@ namespace Neuz.DevKit.Extensions.Test
 
                 object obj3 = null;
                 Assert.IsTrue(obj3.IsNull());
+            });
+
+            "Object.IsDBNull()".Test(() =>
+            {
+                object obj1 = null;
+                Assert.IsFalse(obj1.IsDBNull());
+
+                object obj2 = DBNull.Value;
+                Assert.IsTrue(obj2.IsDBNull());
             });
         }
 
