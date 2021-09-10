@@ -102,6 +102,18 @@ namespace Neuz.DevKit.Extensions.Test
                 object obj4 = MyEnum.First;
                 Assert.IsTrue(obj4.IsEnum());
             });
+
+            "Object.IsValueType()".Test(() =>
+            {
+                var obj1 = new[] {"1", "2"};
+                Assert.IsFalse(obj1.IsValueType());
+
+                var obj2 = 1234;
+                Assert.IsTrue(obj2.IsValueType());
+
+                object obj4 = MyEnum.First;
+                Assert.IsTrue(obj4.IsValueType());
+            });
         }
 
 
