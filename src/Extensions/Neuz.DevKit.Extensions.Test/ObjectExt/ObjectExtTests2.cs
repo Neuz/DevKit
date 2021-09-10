@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MSTest.Extensions.Contracts;
 
@@ -25,12 +25,26 @@ namespace Neuz.DevKit.Extensions.Test
 
                 var obj3 = typeof(string);
                 Assert.IsTrue(obj3.IsClass());
+
+                object obj4 = null;
+                Assert.IsFalse(obj4.IsClass());
+            });
+
+            "Object.IsArray".Test(() =>
+            {
+                var obj1 = new[] {"1", "2"};
+                Assert.IsTrue(obj1.IsArray());
+
+                var obj2 = new List<string> {"1", "2"};
+                Assert.IsFalse(obj2.IsArray());
+
+                object obj3 = null;
+                Assert.IsFalse(obj3.IsArray());
             });
         }
 
         public class MyClass
         {
-            
         }
     }
 }
