@@ -30,7 +30,7 @@ namespace Neuz.DevKit.Extensions.Test
                 Assert.IsFalse(obj4.IsClass());
             });
 
-            "Object.IsArray".Test(() =>
+            "Object.IsArray()".Test(() =>
             {
                 var obj1 = new[] {"1", "2"};
                 Assert.IsTrue(obj1.IsArray());
@@ -40,6 +40,18 @@ namespace Neuz.DevKit.Extensions.Test
 
                 object obj3 = null;
                 Assert.IsFalse(obj3.IsArray());
+            });
+
+            "Object.IsNull()".Test(() =>
+            {
+                var obj1 = new[] { "1", "2" };
+                Assert.IsFalse(obj1.IsNull());
+
+                var obj2 = new List<string> { "1", "2" };
+                Assert.IsFalse(obj2.IsNull());
+
+                object obj3 = null;
+                Assert.IsTrue(obj3.IsNull());
             });
         }
 
