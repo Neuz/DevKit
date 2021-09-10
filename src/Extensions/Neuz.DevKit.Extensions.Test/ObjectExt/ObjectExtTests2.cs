@@ -45,10 +45,10 @@ namespace Neuz.DevKit.Extensions.Test
 
             "Object.IsNull()".Test(() =>
             {
-                var obj1 = new[] { "1", "2" };
+                var obj1 = new[] {"1", "2"};
                 Assert.IsFalse(obj1.IsNull());
 
-                var obj2 = new List<string> { "1", "2" };
+                var obj2 = new List<string> {"1", "2"};
                 Assert.IsFalse(obj2.IsNull());
 
                 object obj3 = null;
@@ -72,9 +72,29 @@ namespace Neuz.DevKit.Extensions.Test
                 object obj2 = DBNull.Value;
                 Assert.IsTrue(obj2.IsNullOrDbNull());
             });
+
+            "Object.IsSerializable()".Test(() =>
+            {
+                var obj1 = new[] {"1", "2"};
+                Assert.IsTrue(obj1.IsSerializable());
+
+                object obj2 = null;
+                Assert.IsFalse(obj2.IsSerializable());
+
+                object obj3 = new MyClass();
+                Assert.IsFalse(obj3.IsSerializable());
+
+                object obj4 = new MyClass2();
+                Assert.IsTrue(obj4.IsSerializable());
+            });
         }
 
         public class MyClass
+        {
+        }
+
+        [Serializable]
+        public class MyClass2
         {
         }
     }
