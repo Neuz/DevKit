@@ -10,21 +10,21 @@ namespace Neuz.DevKit.Extensions.Test
         [ContractTestCase]
         public void SetTimeTest_1()
         {
-            "SetTime() - 1".Test(() =>
+            "DataTime.SetTime() - 1".Test(() =>
             {
                 var dt       = new DateTime(2021, 12, 31);
                 var expected = new DateTime(2021, 12, 31, 1, 2, 3, 999);
                 Assert.AreEqual(expected, dt.SetTime(1, 2, 3, 999));
             });
 
-            "SetTime() - 2".Test(() =>
+            "DataTime.SetTime() - 2".Test(() =>
             {
                 var dt       = new DateTime(2021, 12, 31);
                 var expected = new DateTime(2021, 12, 31, 0, 0, 0);
                 Assert.AreEqual(expected, dt.SetTime());
             });
 
-            "SetTime() 异常 - 1".Test(() =>
+            "DataTime.SetTime() 异常 - 1".Test(() =>
             {
                 var dt = new DateTime(2021, 12, 31);
                 Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
@@ -41,7 +41,7 @@ namespace Neuz.DevKit.Extensions.Test
         [ContractTestCase]
         public void EndOfDayTest_1()
         {
-            "EndOfDay() - 1".Test(() =>
+            "DataTime.EndOfDay() - 1".Test(() =>
             {
                 var dt  = new DateTime(2021, 12, 31);
                 var end = dt.EndOfDay();
@@ -55,7 +55,7 @@ namespace Neuz.DevKit.Extensions.Test
         [ContractTestCase]
         public void StartOfDayTest_1()
         {
-            "StartOfDay() - 1".Test(() =>
+            "DataTime.StartOfDay() - 1".Test(() =>
             {
                 var dt = new DateTime(2021, 12, 31);
                 var rs = dt.StartOfDay();
@@ -69,7 +69,7 @@ namespace Neuz.DevKit.Extensions.Test
         [ContractTestCase]
         public void StartOfWeekTest_1()
         {
-            "StartOfWeek() - 1".Test(() =>
+            "DataTime.StartOfWeek() - 1".Test(() =>
             {
                 var dt = new DateTime(2019, 4, 1, 1, 2, 3);
                 var rs = dt.StartOfWeek(DayOfWeek.Sunday);
@@ -86,7 +86,7 @@ namespace Neuz.DevKit.Extensions.Test
         [ContractTestCase]
         public void EndOfWeekTest_1()
         {
-            "EndOfWeek() - 1".Test(() =>
+            "DataTime.EndOfWeek() - 1".Test(() =>
             {
                 var dt = new DateTime(2019, 4, 1, 1, 2, 3);
                 var rs = dt.EndOfWeek(DayOfWeek.Friday);
@@ -103,31 +103,31 @@ namespace Neuz.DevKit.Extensions.Test
         [ContractTestCase]
         public void TimeStampTest_1()
         {
-            "TotalDays()".Test(() =>
+            "DataTime.TotalDays()".Test(() =>
             {
                 var dt = new DateTime(2020, 10, 11, 11, 11, 11);
                 Assert.AreEqual(18546.466099537036, dt.TotalDays());
             });
 
-            "TotalHours()".Test(() =>
+            "DataTime.TotalHours()".Test(() =>
             {
                 var dt = new DateTime(2019, 4, 1, 11, 11, 11);
                 Assert.AreEqual(431699.18638888886, dt.TotalHours());
             });
 
-            "TotalMinutes()".Test(() =>
+            "DataTime.TotalMinutes()".Test(() =>
             {
                 var dt = new DateTime(2019, 4, 1, 11, 11, 11);
                 Assert.AreEqual(25901951.183333334, dt.TotalMinutes());
             });
 
-            "TotalSeconds()".Test(() =>
+            "DataTime.TotalSeconds()".Test(() =>
             {
                 var dt = new DateTime(2019, 4, 1, 11, 11, 11);
                 Assert.AreEqual(1554117071, dt.TotalSeconds());
             });
 
-            "TotalMilliseconds()".Test(() =>
+            "DataTime.TotalMilliseconds()".Test(() =>
             {
                 var dt = new DateTime(2019, 4, 1, 11, 11, 11);
                 Assert.AreEqual(1554117071000, dt.TotalMilliseconds());
