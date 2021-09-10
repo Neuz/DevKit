@@ -106,7 +106,31 @@ namespace Neuz.DevKit.Extensions.Test
             "TotalDays()".Test(() =>
             {
                 var dt = new DateTime(2020, 10, 11, 11, 11, 11);
-                Assert.AreEqual(18546.466099537036,dt.TotalDays());
+                Assert.AreEqual(18546.466099537036, dt.TotalDays());
+            });
+
+            "TotalHours()".Test(() =>
+            {
+                var dt = new DateTime(2019, 4, 1, 11, 11, 11);
+                Assert.AreEqual(431699.18638888886, dt.TotalHours());
+            });
+
+            "TotalMinutes()".Test(() =>
+            {
+                var dt = new DateTime(2019, 4, 1, 11, 11, 11);
+                Assert.AreEqual(25901951.183333334, dt.TotalMinutes());
+            });
+
+            "TotalSeconds()".Test(() =>
+            {
+                var dt = new DateTime(2019, 4, 1, 11, 11, 11);
+                Assert.AreEqual(1554117071, dt.TotalSeconds());
+            });
+
+            "TotalMilliseconds()".Test(() =>
+            {
+                var dt = new DateTime(2019, 4, 1, 11, 11, 11);
+                Assert.AreEqual(1554117071000, dt.TotalMilliseconds());
             });
         }
     }

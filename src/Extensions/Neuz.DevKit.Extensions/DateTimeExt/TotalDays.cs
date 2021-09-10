@@ -21,7 +21,7 @@ namespace Neuz.DevKit.Extensions
         ///     <code>
         ///         <![CDATA[
         /// var dt = new DateTime(2019, 4, 1, 11, 11, 11);
-        /// dt.GetTotalDays(); // 17987.466099537036
+        /// dt.TotalDays(); // 17987.466099537036
         ///         ]]>
         ///     </code>
         /// </example>
