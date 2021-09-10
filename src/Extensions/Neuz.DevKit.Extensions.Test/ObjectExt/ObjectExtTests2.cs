@@ -13,9 +13,9 @@ namespace Neuz.DevKit.Extensions.Test
     public class ObjectExtTests2
     {
         [ContractTestCase]
-        public void To_Test_1()
+        public void Is_Test_1()
         {
-            "Object.IsClass".Test(() =>
+            "Object.IsClass()".Test(() =>
             {
                 var obj1 = new MyClass();
                 Assert.IsTrue(obj1.IsClass());

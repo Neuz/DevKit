@@ -11,7 +11,7 @@ namespace Neuz.DevKit.Extensions.Test
         [ContractTestCase]
         public void GetStringTest_1()
         {
-            "byte[].GetString_使用_1".Test(() =>
+            "byte[].GetString() - 1".Test(() =>
             {
                 var str = "abcd";
                 var b = Encoding.UTF8.GetBytes(str);
@@ -19,7 +19,7 @@ namespace Neuz.DevKit.Extensions.Test
             });
 
 
-            "byte[].GetString_使用_2".Test(() =>
+            "byte[].GetString() - 2".Test(() =>
             {
                 var str = "abcd";
                 var encoding = Encoding.ASCII;
@@ -27,7 +27,7 @@ namespace Neuz.DevKit.Extensions.Test
                 Assert.AreEqual(str, b.GetString(encoding));
             });
 
-            "byte[].GetString_异常_1".Test(() =>
+            "byte[].GetString() 异常 - 1".Test(() =>
             {
                 var str = "abcd";
                 var b = Encoding.UTF8.GetBytes(str);
@@ -38,7 +38,7 @@ namespace Neuz.DevKit.Extensions.Test
                 });
             });
 
-            "byte[].GetString_异常_2".Test(() =>
+            "byte[].GetString() 异常 -2".Test(() =>
             {
                 var str = "abcd";
                 var encoding = Encoding.ASCII;
@@ -49,7 +49,7 @@ namespace Neuz.DevKit.Extensions.Test
                 });
             });
 
-            "byte[].GetString_异常_3".Test(() =>
+            "byte[].GetString() 异常 - 3".Test(() =>
             {
                 var str = "abcd";
                 var b = Encoding.UTF8.GetBytes(str);

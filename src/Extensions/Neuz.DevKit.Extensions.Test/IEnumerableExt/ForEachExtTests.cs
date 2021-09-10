@@ -14,7 +14,7 @@ namespace Neuz.DevKit.Extensions.Test
         [ContractTestCase]
         public void ForEach_Test_1()
         {
-            "Array.ForEach_使用_1".Test(() =>
+            "Array.ForEach() - 1".Test(() =>
             {
                 var arr = new[] {"aa", "bb"};
                 arr.ForEach((i, item) =>
@@ -24,7 +24,7 @@ namespace Neuz.DevKit.Extensions.Test
                 });
             });
 
-            "Array.ForEach_使用_2".Test(() =>
+            "Array.ForEach() - 2".Test(() =>
             {
                 var arr = new[] {1, 2};
                 arr.ForEach((i, item) =>
@@ -35,7 +35,7 @@ namespace Neuz.DevKit.Extensions.Test
             });
 
 
-            "Array.ForEach_异常_1".Test(() =>
+            "Array.ForEach() 异常 - 1".Test(() =>
             {
                 int[] arr = null;
                 Assert.ThrowsException<ArgumentNullException>(() =>
@@ -48,7 +48,7 @@ namespace Neuz.DevKit.Extensions.Test
         [ContractTestCase]
         public void ForEach_Test_2()
         {
-            "List|Array.ForEach_使用_1".Test(() =>
+            "List|Array.ForEach() - 1".Test(() =>
             {
                 var arr = new[] {"aa", "bb"};
                 var rs = new List<string>();
@@ -57,7 +57,7 @@ namespace Neuz.DevKit.Extensions.Test
                 Assert.AreEqual(arr[1], rs[1]);
             });
 
-            "List|Array.ForEach_使用_2".Test(() =>
+            "List|Array.ForEach() - 2".Test(() =>
             {
                 var arr = new[] {1, 2};
                 var rs = new List<int>();
@@ -67,7 +67,7 @@ namespace Neuz.DevKit.Extensions.Test
             });
 
 
-            "Array.ForEach_异常_1".Test(() =>
+            "Array.ForEach() 异常 - 1".Test(() =>
             {
                 int[] arr = null;
                 Assert.ThrowsException<ArgumentNullException>(() =>
