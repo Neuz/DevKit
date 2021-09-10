@@ -99,5 +99,15 @@ namespace Neuz.DevKit.Extensions.Test
                 Assert.AreEqual(999, rs.Millisecond);
             });
         }
+
+        [ContractTestCase]
+        public void TimeStampTest_1()
+        {
+            "TotalDays()".Test(() =>
+            {
+                var dt = new DateTime(2020, 10, 11, 11, 11, 11);
+                Assert.AreEqual(18546.466099537036,dt.TotalDays());
+            });
+        }
     }
 }
