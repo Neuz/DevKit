@@ -30,8 +30,7 @@ namespace Neuz.DevKit.Extensions
         /// </example>
         public static string GetString(this byte[] @this, Encoding encoding)
         {
-            if (@this == null) throw new ArgumentNullException(nameof(@this));
-            if (encoding == null) throw new ArgumentNullException(nameof(encoding));
+            NullCheck.ThrowIfNull(@this,encoding);
             return encoding.GetString(@this);
         }
 

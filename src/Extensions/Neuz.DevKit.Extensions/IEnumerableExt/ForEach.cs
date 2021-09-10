@@ -30,8 +30,7 @@ namespace Neuz.DevKit.Extensions
         /// </example>
         public static void ForEach<T>(this IEnumerable<T> @this, Action<int, T> action)
         {
-            if (@this == null) throw new ArgumentNullException(nameof(@this));
-            if (action == null) throw new ArgumentNullException(nameof(action));
+            NullCheck.ThrowIfNull(@this, action);
             var i = 0;
             foreach (var item in @this) action(i++, item);
         }
@@ -60,8 +59,7 @@ namespace Neuz.DevKit.Extensions
         /// </example>
         public static void ForEach<T>(this IEnumerable<T> @this, Action<T> action)
         {
-            if (@this == null) throw new ArgumentNullException(nameof(@this));
-            if (action == null) throw new ArgumentNullException(nameof(action));
+            NullCheck.ThrowIfNull(@this, action);
             foreach (var item in @this) action(item);
         }
     }
