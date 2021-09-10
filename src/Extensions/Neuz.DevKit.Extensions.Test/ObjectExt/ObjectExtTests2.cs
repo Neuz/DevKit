@@ -63,6 +63,15 @@ namespace Neuz.DevKit.Extensions.Test
                 object obj2 = DBNull.Value;
                 Assert.IsTrue(obj2.IsDBNull());
             });
+
+            "Object.IsNullOrDbNull()".Test(() =>
+            {
+                object obj1 = null;
+                Assert.IsTrue(obj1.IsNullOrDbNull());
+
+                object obj2 = DBNull.Value;
+                Assert.IsTrue(obj2.IsNullOrDbNull());
+            });
         }
 
         public class MyClass
