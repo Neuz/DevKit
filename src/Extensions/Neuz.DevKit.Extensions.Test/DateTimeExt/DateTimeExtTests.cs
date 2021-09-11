@@ -5,26 +5,26 @@ using MSTest.Extensions.Contracts;
 namespace Neuz.DevKit.Extensions.Test
 {
     [TestClass]
-    public class DateTimeExtTests
+    public class HasRowsTests
     {
         [ContractTestCase]
         public void SetTime_Test_1()
         {
-            "DataTime.SetTime() - 1".Test(() =>
+            "DateTime.SetTime() - 1".Test(() =>
             {
                 var dt       = new DateTime(2021, 12, 31);
                 var expected = new DateTime(2021, 12, 31, 1, 2, 3, 999);
                 Assert.AreEqual(expected, dt.SetTime(1, 2, 3, 999));
             });
 
-            "DataTime.SetTime() - 2".Test(() =>
+            "DateTime.SetTime() - 2".Test(() =>
             {
                 var dt       = new DateTime(2021, 12, 31);
                 var expected = new DateTime(2021, 12, 31, 0, 0, 0);
                 Assert.AreEqual(expected, dt.SetTime());
             });
 
-            "DataTime.SetTime() 异常 - 1".Test(() =>
+            "DateTime.SetTime() 异常 - 1".Test(() =>
             {
                 var dt = new DateTime(2021, 12, 31);
                 Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
@@ -41,7 +41,7 @@ namespace Neuz.DevKit.Extensions.Test
         [ContractTestCase]
         public void StartOf_EndOf_Test_1()
         {
-            "DataTime.StartOfDay() - 1".Test(() =>
+            "DateTime.StartOfDay() - 1".Test(() =>
             {
                 var dt = new DateTime(2021, 12, 31);
                 var rs = dt.StartOfDay();
@@ -51,7 +51,7 @@ namespace Neuz.DevKit.Extensions.Test
                 Assert.AreEqual(0, rs.Millisecond);
             });
 
-            "DataTime.EndOfDay() - 1".Test(() =>
+            "DateTime.EndOfDay() - 1".Test(() =>
             {
                 var dt  = new DateTime(2021, 12, 31);
                 var end = dt.EndOfDay();
@@ -61,7 +61,7 @@ namespace Neuz.DevKit.Extensions.Test
                 Assert.AreEqual(999, end.Millisecond);
             });
 
-            "DataTime.StartOfWeek() - 1".Test(() =>
+            "DateTime.StartOfWeek() - 1".Test(() =>
             {
                 var dt = new DateTime(2019, 4, 1, 1, 2, 3);
                 var rs = dt.StartOfWeek(DayOfWeek.Sunday);
@@ -74,7 +74,7 @@ namespace Neuz.DevKit.Extensions.Test
                 Assert.AreEqual(0, rs.Millisecond);
             });
 
-            "DataTime.EndOfWeek() - 1".Test(() =>
+            "DateTime.EndOfWeek() - 1".Test(() =>
             {
                 var dt = new DateTime(2019, 4, 1, 1, 2, 3);
                 var rs = dt.EndOfWeek(DayOfWeek.Friday);
@@ -87,7 +87,7 @@ namespace Neuz.DevKit.Extensions.Test
                 Assert.AreEqual(999, rs.Millisecond);
             });
 
-            "DataTime.StartOfMonth() - 1".Test(() =>
+            "DateTime.StartOfMonth() - 1".Test(() =>
             {
                 var dt = new DateTime(2019, 4, 1, 1, 2, 3);
                 var rs = dt.StartOfMonth();
@@ -100,7 +100,7 @@ namespace Neuz.DevKit.Extensions.Test
                 Assert.AreEqual(0, rs.Millisecond);
             });
 
-            "DataTime.EndOfMonth() - 1".Test(() =>
+            "DateTime.EndOfMonth() - 1".Test(() =>
             {
                 var dt = new DateTime(2019, 4, 12, 1, 2, 3);
                 var rs = dt.EndOfMonth();
@@ -113,7 +113,7 @@ namespace Neuz.DevKit.Extensions.Test
                 Assert.AreEqual(999, rs.Millisecond);
             });
 
-            "DataTime.StartOfYear() - 1".Test(() =>
+            "DateTime.StartOfYear() - 1".Test(() =>
             {
                 var dt = new DateTime(2019, 4, 12, 1, 2, 3);
                 var rs = dt.StartOfYear();
@@ -126,7 +126,7 @@ namespace Neuz.DevKit.Extensions.Test
                 Assert.AreEqual(0, rs.Millisecond);
             });
 
-            "DataTime.EndOfYear() - 1".Test(() =>
+            "DateTime.EndOfYear() - 1".Test(() =>
             {
                 var dt = new DateTime(2019, 4, 12, 1, 2, 3);
                 var rs = dt.EndOfYear();
@@ -144,13 +144,13 @@ namespace Neuz.DevKit.Extensions.Test
         [ContractTestCase]
         public void ToString_Test_1()
         {
-            "DataTime.ToString_Common() - 1".Test(() =>
+            "DateTime.ToString_Common() - 1".Test(() =>
             {
                 var dt = new DateTime(2019, 4, 1, 21, 11, 11, 123);
                 Assert.AreEqual("2019-04-01 21:11:11", dt.ToString_Common());
             });
 
-            "DataTime.ToString_Full() - 1".Test(() =>
+            "DateTime.ToString_Full() - 1".Test(() =>
             {
                 var dt = new DateTime(2019, 4, 1, 21, 11, 11, 123);
                 Assert.AreEqual("2019-04-01 21:11:11.1230000", dt.ToString_Full());
@@ -160,31 +160,31 @@ namespace Neuz.DevKit.Extensions.Test
         [ContractTestCase]
         public void TimeStamp_Test_1()
         {
-            "DataTime.TotalDays()".Test(() =>
+            "DateTime.TotalDays()".Test(() =>
             {
                 var dt = new DateTime(2020, 10, 11, 11, 11, 11);
                 Assert.AreEqual(18546.466099537036, dt.TotalDays());
             });
 
-            "DataTime.TotalHours()".Test(() =>
+            "DateTime.TotalHours()".Test(() =>
             {
                 var dt = new DateTime(2019, 4, 1, 11, 11, 11);
                 Assert.AreEqual(431699.18638888886, dt.TotalHours());
             });
 
-            "DataTime.TotalMinutes()".Test(() =>
+            "DateTime.TotalMinutes()".Test(() =>
             {
                 var dt = new DateTime(2019, 4, 1, 11, 11, 11);
                 Assert.AreEqual(25901951.183333334, dt.TotalMinutes());
             });
 
-            "DataTime.TotalSeconds()".Test(() =>
+            "DateTime.TotalSeconds()".Test(() =>
             {
                 var dt = new DateTime(2019, 4, 1, 11, 11, 11);
                 Assert.AreEqual(1554117071, dt.TotalSeconds());
             });
 
-            "DataTime.TotalMilliseconds()".Test(() =>
+            "DateTime.TotalMilliseconds()".Test(() =>
             {
                 var dt = new DateTime(2019, 4, 1, 11, 11, 11);
                 Assert.AreEqual(1554117071000, dt.TotalMilliseconds());

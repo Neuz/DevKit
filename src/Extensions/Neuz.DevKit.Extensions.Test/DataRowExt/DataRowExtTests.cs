@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MSTest.Extensions.Contracts;
 
@@ -36,7 +34,6 @@ namespace Neuz.DevKit.Extensions.Test
                 Assert.AreEqual("aaa", dataTable.Rows[0].Cell("columnName", "aaa"));
 
                 Assert.AreEqual("aaa - 1", dataTable.Rows[0].Cell("columnName", row => $"{row["id"]} - 1"));
-
             });
         }
     }
