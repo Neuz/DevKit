@@ -28,6 +28,15 @@ namespace Neuz.DevKit.Extensions.Test
                 dataTable = null;
                 Assert.ThrowsException<ArgumentNullException>(() => dataTable.FirstRow());
             });
+
+            "DataTable.LastRow() - 1".Test(() =>
+            {
+                var dataTable = new DataTable();
+                Assert.AreEqual(null, dataTable.LastRow());
+
+                dataTable = null;
+                Assert.ThrowsException<ArgumentNullException>(() => dataTable.LastRow());
+            });
         }
     }
 }
