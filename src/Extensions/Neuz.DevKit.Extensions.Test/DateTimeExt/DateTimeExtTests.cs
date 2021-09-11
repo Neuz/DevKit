@@ -140,6 +140,23 @@ namespace Neuz.DevKit.Extensions.Test
             });
         }
 
+
+        [ContractTestCase]
+        public void ToString_Test_1()
+        {
+            "DataTime.ToString_Common() - 1".Test(() =>
+            {
+                var dt = new DateTime(2019, 4, 1, 21, 11, 11, 123);
+                Assert.AreEqual("2019-04-01 21:11:11", dt.ToString_Common());
+            });
+
+            "DataTime.ToString_Full() - 1".Test(() =>
+            {
+                var dt = new DateTime(2019, 4, 1, 21, 11, 11, 123);
+                Assert.AreEqual("2019-04-01 21:11:11.1230000", dt.ToString_Full());
+            });
+        }
+
         [ContractTestCase]
         public void TimeStamp_Test_1()
         {
