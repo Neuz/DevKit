@@ -112,6 +112,32 @@ namespace Neuz.DevKit.Extensions.Test
                 Assert.AreEqual(59, rs.Second);
                 Assert.AreEqual(999, rs.Millisecond);
             });
+
+            "DataTime.StartOfYear() - 1".Test(() =>
+            {
+                var dt = new DateTime(2019, 4, 12, 1, 2, 3);
+                var rs = dt.StartOfYear();
+                Assert.AreEqual(2019, rs.Year);
+                Assert.AreEqual(1, rs.Month);
+                Assert.AreEqual(1, rs.Day);
+                Assert.AreEqual(0, rs.Hour);
+                Assert.AreEqual(0, rs.Minute);
+                Assert.AreEqual(0, rs.Second);
+                Assert.AreEqual(0, rs.Millisecond);
+            });
+
+            "DataTime.EndOfYear() - 1".Test(() =>
+            {
+                var dt = new DateTime(2019, 4, 12, 1, 2, 3);
+                var rs = dt.EndOfYear();
+                Assert.AreEqual(2019, rs.Year);
+                Assert.AreEqual(12, rs.Month);
+                Assert.AreEqual(31, rs.Day);
+                Assert.AreEqual(23, rs.Hour);
+                Assert.AreEqual(59, rs.Minute);
+                Assert.AreEqual(59, rs.Second);
+                Assert.AreEqual(999, rs.Millisecond);
+            });
         }
 
         [ContractTestCase]
