@@ -9,7 +9,7 @@ namespace Neuz.DevKit.Extensions.Test
     public class BytesExtTests
     {
         [ContractTestCase]
-        public void GetStringTest_1()
+        public void GetString_Test_1()
         {
             "byte[].GetString() - 1".Test(() =>
             {

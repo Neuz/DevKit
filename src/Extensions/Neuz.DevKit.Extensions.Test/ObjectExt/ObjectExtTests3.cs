@@ -13,7 +13,7 @@ namespace Neuz.DevKit.Extensions.Test
     public class ObjectExtTests3
     {
         [ContractTestCase]
-        public void In_Test_1()
+        public void In_NotIn_Test_1()
         {
             "Object.In<T>()".Test(() =>
             {
@@ -28,11 +28,7 @@ namespace Neuz.DevKit.Extensions.Test
                 Assert.IsTrue(s1.In(stringItems));
                 Assert.IsTrue(s2.In(stringItems));
             });
-        }
 
-        [ContractTestCase]
-        public void NotIn_Test_1()
-        {
             "Object.NotIn<T>()".Test(() =>
             {
                 var strItems = new[] {"a", "A", "b"};
