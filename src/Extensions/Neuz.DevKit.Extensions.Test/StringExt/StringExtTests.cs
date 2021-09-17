@@ -35,6 +35,12 @@ namespace Neuz.DevKit.Extensions.Test
                 Assert.IsTrue("".IsNullOrWhiteSpace());
                 Assert.IsTrue("\r".IsNullOrWhiteSpace());
             });
+            
+            "String.CaseCmp() - 1".Test(() =>
+            {
+                Assert.IsTrue("aaa".CaseCmp("AAA"));
+                Assert.IsTrue("abc".CaseCmp("abC"));
+            });
         }
 
         [ContractTestCase]
