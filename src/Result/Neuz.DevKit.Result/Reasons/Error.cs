@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using Neuz.DevKit.Extensions;
 
 namespace Neuz.DevKit.Result
@@ -8,6 +7,11 @@ namespace Neuz.DevKit.Result
     public class Error : Reason
     {
         public Exception Exception { get; set; }
+
+        public Error(Exception exception) : base(exception.Message)
+        {
+            Exception = exception;
+        }
 
         public Error(string errorMessage = null, Exception exception = null) : base(errorMessage)
         {

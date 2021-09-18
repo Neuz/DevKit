@@ -3,10 +3,11 @@ using System.Collections.Generic;
 
 namespace Neuz.DevKit.Result
 {
-    public static class Extensions
+    /// <summary>
+    /// Result 扩展方法
+    /// </summary>
+    public static partial class Extensions
     {
-        #region Success
-
         public static Result WithSuccess(this Result @this, Success success) => @this.WithReason(success);
 
         public static Result WithSuccess(this Result @this, Action<Success> action)
@@ -17,10 +18,6 @@ namespace Neuz.DevKit.Result
         }
 
         public static Result WithSuccesses(this Result @this, IEnumerable<Success> successes) => @this.WithReasons(successes);
-
-        #endregion
-
-        #region Error
 
         public static Result WithError(this Result @this, Error error) => @this.WithReason(error);
 
@@ -34,13 +31,5 @@ namespace Neuz.DevKit.Result
         }
 
         public static Result WithErrors(this Result @this, IEnumerable<Error> errors) => @this.WithReasons(errors);
-
-        #endregion
-        
-    }
-
-    public partial class Result<TValue>
-    {
-        // public static Result<TValue> Ok<TValue>(TValue value) => new Result<TValue>(value);
     }
 }
