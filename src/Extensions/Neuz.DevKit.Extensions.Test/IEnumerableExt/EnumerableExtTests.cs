@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MSTest.Extensions.Contracts;
 
@@ -16,7 +17,7 @@ namespace Neuz.DevKit.Extensions.Test
         {
             "Array.ForEach() - 1".Test(() =>
             {
-                var arr = new[] {"aa", "bb"};
+                var arr = new[] { "aa", "bb" };
                 arr.ForEach((i, item) =>
                 {
                     Console.WriteLine(item.ToString());
@@ -26,7 +27,7 @@ namespace Neuz.DevKit.Extensions.Test
 
             "Array.ForEach() - 2".Test(() =>
             {
-                var arr = new[] {1, 2};
+                var arr = new[] { 1, 2 };
                 arr.ForEach((i, item) =>
                 {
                     Console.WriteLine(item.ToString());
@@ -50,8 +51,8 @@ namespace Neuz.DevKit.Extensions.Test
         {
             "List|Array.ForEach() - 1".Test(() =>
             {
-                var arr = new[] {"aa", "bb"};
-                var rs = new List<string>();
+                var arr = new[] { "aa", "bb" };
+                var rs  = new List<string>();
                 arr.ForEach(item => { rs.Add(item); });
                 Assert.AreEqual(arr[0], rs[0]);
                 Assert.AreEqual(arr[1], rs[1]);
@@ -59,8 +60,8 @@ namespace Neuz.DevKit.Extensions.Test
 
             "List|Array.ForEach() - 2".Test(() =>
             {
-                var arr = new[] {1, 2};
-                var rs = new List<int>();
+                var arr = new[] { 1, 2 };
+                var rs  = new List<int>();
                 arr.ForEach(i => rs.Add(i * 10));
                 Assert.AreEqual(rs[0], arr[0] * 10);
                 Assert.AreEqual(rs[1], arr[1] * 10);
@@ -75,6 +76,19 @@ namespace Neuz.DevKit.Extensions.Test
                     arr.ForEach(item => { });
                 });
             });
+        }
+
+        [ContractTestCase]
+        public void IsNullOrEmptyTest()
+        {
+            "Enumerable.IsNullOrEmpty() - 1"
+                .Test((IEnumerable<object> input, bool result) =>
+                {
+                    Assert.AreEqual(result, input.IsNullOrEmpty());
+                }).WithArguments(
+                    (Enumerable.Empty<string>(), true),
+                    (new[] { "" }, false)
+                );
         }
     }
 }
