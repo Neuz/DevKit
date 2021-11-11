@@ -5,6 +5,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="FlubuCore" Version="6.1.6" />
+      <PackageReference Include="FlubuCore" Version="6.3.2" />
     </ItemGroup>
 </Project>
